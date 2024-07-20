@@ -18,7 +18,7 @@ const Explore = () => {
 
   useEffect(() => {
     dispatch(fetchCoinsAction(currentPage));
-  }, [dispatch]);
+  }, [dispatch, currentPage]);
 
   const handlePrev = () => {
     const prevPage = currentPage > 1 ? currentPage - 1 : 1;
