@@ -159,8 +159,11 @@ const Navbar = () => {
         >
           <h1 className="text-lg font-semibold mb-4">Watchlist</h1>
           <ul c className="w-full">
-            {watchlist.map((s) => (
-              <li className="px-1 py-2 gap-2 rounded-lg flex items-center justify-start hover:bg-gray-800">
+            {watchlist.map((s, index) => (
+              <li
+                className="px-1 py-2 gap-2 rounded-lg flex items-center justify-start hover:bg-gray-800"
+                key={index}
+              >
                 <Link
                   href={`/explore/${s.id}`}
                   className="flex items-center gap-2"

@@ -39,7 +39,7 @@ const ChartComponent = ({ data, label, title, days }) => {
 
   let labels;
   if (days == 1) {
-    labels = data.map((entry) => {
+    labels = data.map((entry, index) => {
       const time = new Date(entry[0]);
       return `${time.getHours()}:${time.getMinutes()}`;
     });
