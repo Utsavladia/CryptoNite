@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCoin } from "../redux/Reducers/coinsMarketCapSlice";
 import { fetchCoinsAction } from "../redux/Actions/coinsAction";
 import { formatMarketCap } from "@/utils";
+import CoinlistLoading from "@/Loadings/CoinlistLoading";
 
 const CoinsMarketCapList = () => {
   const dispatch = useDispatch();
@@ -29,8 +30,14 @@ const CoinsMarketCapList = () => {
 
   return (
     <div className="flex max-w-screen items-center">
-      {loading ? (
-        <p>Loading...</p>
+      {coins.length <= 0 ? (
+        <div className="flex my-4  w-auto items-center gap-6 justify-start relative">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div className="w-48 h-24">
+              <CoinlistLoading />
+            </div>
+          ))}
+        </div>
       ) : (
         <div className="flex  w-auto my-4   items-center gap-6 justify-start relative">
           {coins?.map((coin) => (

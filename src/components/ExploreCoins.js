@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { PriceColor } from "@/utils";
+import CoinlistLoading from "@/Loadings/CoinlistLoading";
 
 const ExploreCoins = ({ coins }) => {
   const router = useRouter();
@@ -24,7 +25,9 @@ const ExploreCoins = ({ coins }) => {
   return (
     <div className=" bg-gray-900 text-white rounded-lg p-3 shadow-lg">
       {!coins || coins?.length === 0 ? (
-        <div>No data available</div>
+        <div className="w-[90vw] h-[50vh]">
+          <CoinlistLoading />
+        </div>
       ) : (
         <table className="w-full text-base text-left bg-gray-900 rounded-lg cursor-pointer">
           <thead className=" text-base border-b border-slate-800   text-gray-500">

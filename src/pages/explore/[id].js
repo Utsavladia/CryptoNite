@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import ChartComponent from "@/components/ChartComponent";
 import { formatMarketCap } from "@/utils";
 import { PriceColor, PriceStatus } from "@/utils";
+import CoinlistLoading from "@/Loadings/CoinlistLoading";
 
 const ProductPage = () => {
   const [coin, setCoin] = useState(null);
@@ -87,7 +88,7 @@ const ProductPage = () => {
             </div>
           </div>
         ) : (
-          <div>Loading...</div>
+          <p>Loading...</p>
         )}
 
         <div className="w-full flex flex-col ">
@@ -101,7 +102,9 @@ const ProductPage = () => {
               />
             </div>
           ) : (
-            <h1>Data not fetched yet</h1>
+            <div className="w-[90vw] md:w-2/3 h-[50vh]">
+              <CoinlistLoading />
+            </div>
           )}
           <div className="mt-6 flex w-full items-center justify-center gap-4">
             {timeOptions.map((time) => (
@@ -138,7 +141,9 @@ const ProductPage = () => {
               </div>
             </div>
           ) : (
-            <div>Loading...</div>
+            <div className="w-[90vw] md:w-2/3 h-[30vh]">
+              <CoinlistLoading />
+            </div>
           )}
           <div className="flex w-full justify-between items-center px-4 font-semibold mb-8">
             <span>24h Low</span>

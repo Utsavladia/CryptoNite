@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+import { Rings } from "react-loading-icons";
 
 const Model = ({ path }) => {
   const [model, setModel] = useState(null);
@@ -38,7 +39,7 @@ const ThreeDModelFBX = ({ path }) => {
     >
       {/* Set up the default camera */}
       <PerspectiveCamera makeDefault position={[-30, 300, 300]} />
-      <Suspense fallback={null}>
+      <Suspense fallback={<Rings />}>
         {/* Lights */}
         <ambientLight intensity={0.8} /> {/* Ambient light */}
         <spotLight

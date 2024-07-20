@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchCompanyHoldings } from "@/services/coinService"; // Adjust path as per your project structure
+import CoinlistLoading from "@/Loadings/CoinlistLoading";
 
 const CompanyHolding = ({ coin }) => {
   const [holding, setHolding] = useState([]); // Initialize as empty array
@@ -24,11 +25,11 @@ const CompanyHolding = ({ coin }) => {
   }, [coin]);
 
   return (
-    <div className="bg-gray-900 text-white rounded-lg p-3 shadow-lg overflow-x-auto max-w-screen">
-      {loading ? (
-        <div>Loading...</div>
-      ) : holding.length === 0 ? (
-        <div>No data available</div>
+    <div className="bg-gray-900 text-white rounded-lg p-3 shadow-lg w-full ">
+      {holding.length <= 0 ? (
+        <div className="w-[90%] h-lvh">
+          <CoinlistLoading />
+        </div>
       ) : (
         <table className="w-full md:text-base text-xs sm:text-sm text-left bg-gray-900 rounded-lg cursor-pointer">
           <thead className="md:text-base text-sm border-b border-slate-800 text-gray-500">
