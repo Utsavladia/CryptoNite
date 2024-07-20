@@ -80,25 +80,23 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-transparent backdrop-blur-xl px-12 fixed top-1 left-1/2 transform -translate-x-1/2 w-[90%] z-50 rounded-3xl border-gray-400 border-2">
-      <div className="flex justify-between gap-6 items-center h-20 relative">
-        <div className="flex py-4">
+    <nav className="bg-transparent flex items-center md:h-20 justify-between backdrop-blur-xl md:px-8 px-4 lg:px-12 fixed top-1 left-1/2 transform -translate-x-1/2 w-[95%] z-50 rounded-3xl border-gray-400 border-2">
+      <div className="flex flex-grow py-2 md:py-4  md:justify-between items-center flex-col md:flex-row ">
+        <div className="gap-6 md:gap-12 flex items-center justify-start">
           <Link href="/">
-            <h2
-              className="text-xl lg:text-4xl leading-loose pb-4 pt-3 font-bold"
-              style={{
-                color: "black",
-                WebkitTextStroke:
-                  "0.5px #FEC20C" /* Adjust the stroke width and color */,
-              }}
-            >
+            <h2 class="text-xl md:text-2xl lg:text-4xl leading-loose  font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-white to-blue-600 ">
               CryptoNite
             </h2>
           </Link>
+          <Link href="/explore">
+            <p className="text-white text-xl md:text-2xl font-semibold hover:text-orange-500">
+              Explore
+            </p>
+          </Link>
         </div>
-        <div className="relative border-2 border-gray-800 rounded-full flex items-center justify-between">
+        <div className="relative border-1 lg:border-2 border-gray-800 rounded-full flex items-center justify-start mr-6 md:mr-12">
           <input
-            className="bg-transparent w-96 px-4 py-2 text-white border-2 focus:border-orange-500 rounded-full focus:outline-none"
+            className="bg-transparent w-44 md:w-64 lg:w-96 px-4 py-2 text-white border-2 focus:border-orange-500 rounded-full focus:outline-none"
             placeholder="Search Cryptocurrencies..."
             type="text"
             value={searchTerm}
@@ -137,55 +135,49 @@ const Navbar = () => {
             <FaSearch className="" />
           </div>
         </div>
-        <div className="flex items-center gap-32 relative">
-          <Link href="/explore">
-            <p className="text-white text-xl pb-4 pt-3 font-semibold hover:text-orange-500">
-              Explore
-            </p>
-          </Link>
-          <p className="absolute text-base right-20 top-10">
-            {" "}
-            Watchlist Drop ➜
-          </p>
+      </div>
 
-          <div
-            onClick={handleWatchlistDrop}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            className="text-xl "
-            onMouseEnter={() => setClick(true)}
-            onMouseLeave={() => setClick(false)}
-          >
-            <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
-          </div>
-          {watchlistView && (
-            <div
-              className="absolute top-20 -right-10  p-6 bg-gray-950 w-56 border-2 border-gray-500 rounded-lg flex flex-col "
-              ref={suggestionRef}
-            >
-              <h1 className="text-lg font-semibold mb-4">Watchlist</h1>
-              <ul c className="w-full">
-                {watchlist.map((s) => (
-                  <li className="px-1 py-2 gap-2 rounded-lg flex items-center justify-start hover:bg-gray-800">
-                    <Link
-                      href={`/explore/${s.id}`}
-                      className="flex items-center gap-2"
-                    >
-                      <Image
-                        src={s?.image ? s.image : s.large}
-                        width={20}
-                        height={20}
-                        alt={s.name}
-                      />
-                      {s.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+      <div
+        onClick={handleWatchlistDrop}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        className="text-xl  "
+        onMouseEnter={() => setClick(true)}
+        onMouseLeave={() => setClick(false)}
+      >
+        <div className="text-xl bottom-2 relative z-50">
+          <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
         </div>
       </div>
+      <p className="absolute text-base md:right-10 right-4 top-16 md:top-12  ">
+        Drop Watchlist
+      </p>
+      {watchlistView && (
+        <div
+          className="absolute top-28 md:top-20 right-0  p-6 bg-gray-950 w-56 border-2 border-gray-500 rounded-lg flex flex-col "
+          ref={suggestionRef}
+        >
+          <h1 className="text-lg font-semibold mb-4">Watchlist</h1>
+          <ul c className="w-full">
+            {watchlist.map((s) => (
+              <li className="px-1 py-2 gap-2 rounded-lg flex items-center justify-start hover:bg-gray-800">
+                <Link
+                  href={`/explore/${s.id}`}
+                  className="flex items-center gap-2"
+                >
+                  <Image
+                    src={s?.image ? s.image : s.large}
+                    width={20}
+                    height={20}
+                    alt={s.name}
+                  />
+                  {s.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

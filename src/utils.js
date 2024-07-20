@@ -14,7 +14,7 @@ export const PriceColor = ({ value }) => {
   const textColorClass = value >= 0 ? "text-green-500" : "text-red-500";
   const formatedValue = value ? value.toFixed(2) : 0;
   return (
-    <td className={`py-4 px-6 ${textColorClass}`}>
+    <td className={`md:py-4 md:px-6 p-3 ${textColorClass}`}>
       {value >= 0 ? `+${formatedValue}` : `${formatedValue}`}%
     </td>
   );

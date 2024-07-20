@@ -59,8 +59,8 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="p-24 flex gap-6">
-      <div className="w-2/3">
+    <div className="px-6 py-24 md:p-24 flex gap-6 md:flex-row flex-col">
+      <div className="md:w-2/3 w-full">
         {coin ? (
           <div className="py-8 flex items-start justify-start flex-col">
             <div className=" py-3 flex items-center justify-start ">
@@ -92,12 +92,14 @@ const ProductPage = () => {
 
         <div className="w-full flex flex-col ">
           {coinChart ? (
-            <ChartComponent
-              data={coinChart}
-              title="Title here"
-              label="Label here"
-              days={days}
-            />
+            <div className="flex max-w-full overflow-x-auto">
+              <ChartComponent
+                data={coinChart}
+                title="Title here"
+                label="Label here"
+                days={days}
+              />
+            </div>
           ) : (
             <h1>Data not fetched yet</h1>
           )}
@@ -117,7 +119,7 @@ const ProductPage = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-start w-2/3 mt-12 gap-6">
+        <div className="flex flex-col items-start md:w-2/3 w-full md:mt-12 mt-24 gap-6">
           <h2 className="text-xl font-semibold mb-12">Performance</h2>
 
           {coin ? (
@@ -164,20 +166,20 @@ const ProductPage = () => {
             <span>All time Low</span>
             <span>All time High</span>
           </div>
-          <table className="w-full text-base text-left bg-gray-900 rounded-t-lg cursor-pointer">
+          <table className="w-full md:text-base text-sm text-left bg-gray-900 rounded-t-lg cursor-pointer">
             <thead className=" text-base border-b border-slate-800   text-gray-500">
               <tr className="pb-6">
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="md:py-3 md:px-6 p-2">
                   7 Days
                 </th>
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="md:py-3 md:px-6 p-2">
                   30 Days
                 </th>
-                <th scope="col" className="py-3 px-6 ">
+                <th scope="col" className="md:py-3 md:px-6 p-2">
                   1 Year
                 </th>
 
-                <th scope="col" className="py-3 px-6 ">
+                <th scope="col" className="md:py-3 md:px-6 p-2">
                   Today
                 </th>
               </tr>
@@ -211,7 +213,7 @@ const ProductPage = () => {
           </table>
         </div>
       </div>
-      <div className="w-1/3 mt-40">
+      <div className="md:w-1/3 w-full mt-40">
         <div className="w-full flex flex-col border-2 border-gray-800 rounded-lg p-4">
           <h1 className="text-xl font-semibold mb-10 ">{coin?.name} Details</h1>
           <div className="flex justify-between items-center mb-3 text-gray-400">

@@ -56,8 +56,10 @@ const CoinsMarketCapList = () => {
                 />
               </div>
               <div>
-                <h2 className="mb-3 text-2xl font-semibold">{coin.name}</h2>
-                <p className="m-0  text-sm opacity-50">
+                <h2 className="mb-1 md:text-2xl text-base font-semibold">
+                  {coin.name}
+                </h2>
+                <p className="m-0  text-xs opacity-50">
                   {formatMarketCap(coin.market_cap)}
                 </p>
               </div>

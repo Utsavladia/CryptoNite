@@ -80,11 +80,19 @@ const GlobalMarketCapChart = () => {
       mode: "index", // Enable tooltip on nearest data point along the line
       intersect: false,
     },
+    plugins: {
+      title: {
+        display: false,
+      },
+      legend: {
+        display: false,
+      },
+    },
   };
 
   return (
     <div
-      className=" border-2 rounded-lg p-4 border-gray-800 w-full my-4"
+      className=" border-2 rounded-lg p-4 border-gray-800  md:min-w-full my-4"
       style={{ height: "400px" }}
     >
       {chartData ? (
