@@ -33,7 +33,7 @@ const CoinsMarketCapList = () => {
       {coins.length <= 0 ? (
         <div className="flex my-4  w-auto items-center gap-6 justify-start relative">
           {Array.from({ length: 6 }).map((_, index) => (
-            <div className="w-48 h-24">
+            <div className="w-48 h-24" key={index}>
               <CoinlistLoading />
             </div>
           ))}
