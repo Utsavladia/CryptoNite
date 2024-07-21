@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
 import { Line } from "react-chartjs-2";
 import { useEffect, useState, useRef } from "react";
-import { formatMarketCap } from "@/utils";
-import CoinlistLoading from "@/Loadings/CoinlistLoading";
+import axios from "axios";
 import { fetchChartMarketCap } from "@/services/coinService";
 import {
   Chart as ChartJS,
@@ -16,6 +15,7 @@ import {
 } from "chart.js";
 import "chart.js/auto";
 import { Color } from "three";
+import CoinlistLoading from "@/Loadings/CoinlistLoading";
 
 // Register the required components
 ChartJS.register(
@@ -46,9 +46,7 @@ const GlobalMarketCapChart = () => {
             datasets: [
               {
                 label: `${selectedCoin} Market Cap`,
-                data: data.market_caps.map((entry) =>
-                  formatMarketCap(entry[1])
-                ),
+                data: data.market_caps.map((entry) => entry[1]),
                 borderColor: "#FEC20C",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
               },
@@ -83,19 +81,11 @@ const GlobalMarketCapChart = () => {
       mode: "index", // Enable tooltip on nearest data point along the line
       intersect: false,
     },
-    plugins: {
-      title: {
-        display: false,
-      },
-      legend: {
-        display: false,
-      },
-    },
   };
 
   return (
     <div
-      className=" border-2 rounded-lg p-4 border-gray-800  md:min-w-full my-4"
+      className=" border-2 rounded-lg p-4 border-gray-800 w-full my-4"
       style={{ height: "400px" }}
     >
       {chartData ? (
