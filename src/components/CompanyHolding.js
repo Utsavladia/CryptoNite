@@ -27,7 +27,7 @@ const CompanyHolding = ({ coin }) => {
   return (
     <div className="bg-gray-900 text-white rounded-lg p-3 shadow-lg w-full ">
       {holding.length <= 0 ? (
-        <div className="w-[90%] h-lvh">
+        <div className="w-[80vw] h-lvh">
           <CoinlistLoading />
         </div>
       ) : (
